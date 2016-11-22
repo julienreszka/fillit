@@ -1,0 +1,39 @@
+	Verifier si le nombre d'arguments est 2
+
+	Lire le fichier et le mettre dans un buffer
+
+	Afficher "error" si
+		le nombre de characteres est impossible
+		Verifier si les \n sont au bon endroit
+		Verifier s'il y a le bon nombre de #
+		Verifier s'il y a le bon nombre de .
+
+	En fonction du nombre de # du fichier de base calculer la taille minimale du nombre de caracteres du carre
+
+	1	4	2
+	2	8	3
+	3	12	4
+	4	16	4
+	5	20	5
+	6	24	5
+	7	28	6
+	8	32	6
+	9	36	6
+	10	40	7
+	11	44	7
+	12	48	7
+	13	52	8
+	14	56	8
+	15	60	8
+	16	64	8
+	17	68	9
+	
+
+
+	Transformer les 4 premiers # en A les 4 suivants en B et ainsi de suite
+
+	Verifier recursivement s'il est possible de poser tous les tetrimino dans le carre minimal l'augmenter juqu'a ce que ca fonctionne.
+	Afficher le carre resolu
+
+
+	Exemples

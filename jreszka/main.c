@@ -28,7 +28,8 @@ typedef struct	s_point
 
 typedef struct 	s_tetrimino
 {
-	t_point ref_point;
+	t_point ref_point_min;
+	t_point ref_point_max;
 	t_point hash[4];
 	char lettre;
 }				t_tetrimino;
@@ -301,23 +302,38 @@ int		main(int argc, char **argv)
 
 	int min_x;
 	int min_y;
+	int max_x;
+	int max_y;
 	tetris_iter = 0;
 	while (tetris_iter < tetriminos_nb)
 	{
 		hash_iter = 0;
 		min_x = 4;
 		min_y = 4;
+		max_x = 0;
+		max_y = 0;
 		while (hash_iter < 4)
 		{
 			if (tetrimino[tetris_iter].hash[hash_iter].x < min_x)
 				min_x = tetrimino[tetris_iter].hash[hash_iter].x;
 			if (tetrimino[tetris_iter].hash[hash_iter].y < min_y)
 				min_y = tetrimino[tetris_iter].hash[hash_iter].y;
+			if (tetrimino[tetris_iter].hash[hash_iter].x > max_x)
+				max_x = tetrimino[tetris_iter].hash[hash_iter].x;
+			if (tetrimino[tetris_iter].hash[hash_iter].y > max_y)
+				max_y = tetrimino[tetris_iter].hash[hash_iter].y;
 			hash_iter++;
 		}
-		tetrimino[tetris_iter].ref_point.x = min_x;
-		tetrimino[tetris_iter].ref_point.y = min_y;
-		printf("\nmin_x %d\nmin_y %d\n", tetrimino[tetris_iter].ref_point.x, tetrimino[tetris_iter].ref_point.y);
+		tetrimino[tetris_iter].ref_point_min.x = min_x;
+		tetrimino[tetris_iter].ref_point_min.y = min_y;
+		tetrimino[tetris_iter].ref_point_max.x = max_x;
+		tetrimino[tetris_iter].ref_point_max.y = max_y;
+		printf("\nmin_x %d\nmin_y %d\nmax_x %d\nmax_y %d\n\n",
+			tetrimino[tetris_iter].ref_point_min.x,
+			tetrimino[tetris_iter].ref_point_min.y,
+			tetrimino[tetris_iter].ref_point_max.x,
+			tetrimino[tetris_iter].ref_point_max.y
+			);
 		tetris_iter++;
 	}
 

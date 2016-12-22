@@ -26,7 +26,7 @@ typedef struct	s_point
 	int y;
 }				t_point;
 
-typedef struct 	s_tetrimino
+typedef struct	s_tetrimino
 {
 	t_point ref_point_min;
 	t_point ref_point_max;
@@ -36,14 +36,21 @@ typedef struct 	s_tetrimino
 	int hauteur;
 }				t_tetrimino;
 
-typedef struct 	s_map
+typedef struct	s_map
 {
 	int size;
 	char **content;
 	t_point iter_point;
 }				t_map;
 
-
+typedef struct	s_parsing_data
+{
+	int char_nb;
+	int hash_nb;
+	int dot_nb;
+	int border_nl_nb;
+	int between_nl_nb;
+}				t_parsing_data;
 
 int		ft_floor_sqrt(int nb)
 {
@@ -73,29 +80,59 @@ int		main(int argc, char **argv)
 */
 	buf = (char *)malloc(sizeof(char) * 10000);
 	fd = open(argv[1], O_RDONLY);
-	//printf("fd is %d\n", fd);
-	//fd = -1;
 	if (fd == -1)
 	{
 		write(2, "open() failed\n", 14);
 		return (0);
 	}
 	ret = read(fd, buf, BUF_SIZE);
-	//printf("ret is %d\n", ret);
-	//ret = -1;
 	if (ret == -1)
 	{
 		write(2, "read() failed\n", 14);
 		return (0);
 	}
 	buf[ret] = '\0';
-	//printf("buf below\n%s\n", buf);
 	if (close(fd) == -1)
 	{
 		write(2, "close() failed\n", 15);
 		return (0);
 	}
-	printf("%s\n", buf);
+
+/*
+**	Parser le buffer et recuperer les datas necessaires aux checks
+*/
+
+	int		char_nb;
+	int		hash_nb;
+	int		dot_nb;
+	int		border_nl_nb;
+	int		between_nl_nb;
+	int		j;
+
+
+	char_nb = 0;
+	hash_nb = 0;
+	dot_nb = 0;
+	border_nl_nb = 0;
+	between_nl_nb = 0;
+	j = 1;
+	while (buf[char_nb])
+	{
+		if (buf[char_nb] == '#')
+			hash_nb++;
+		if (buf[char_nb] == '.')
+			dot_nb++;
+		if ((j) % 5 == 0 && buf[char_nb] == '\n')
+			border_nl_nb++;
+		if ((char_nb + 1) % 21 == 0 && buf[char_nb] == '\n')
+		{
+			between_nl_nb++;
+			j--;
+		}
+		char_nb++;
+		j++;
+	}
+
 /*
 **	Afficher "error" si
 **		le nombre de characteres est impossible
@@ -103,70 +140,16 @@ int		main(int argc, char **argv)
 **		le nombre de . est impossible
 **		les \n ne sont pas au bon endroit
 */
-	int		char_nb;
-	int		hash_nb;
-	int		dot_nb;
-	int		border_nl_nb;
-	int		between_nl_Nb;
-	int		i;
-	int		j;
-	int		tetriminos_nb;
 
-	char_nb = 0;
-	hash_nb = 0;
-	dot_nb = 0;
-	border_nl_nb = 0;
-	between_nl_Nb = 0;
-	i = 0;
-	j = 1;
-	tetriminos_nb = 0;
-	while (buf[i])
-	{
-		char_nb++;
-		if (buf[i] == '#')
-			hash_nb++;
-		if (buf[i] == '.')
-			dot_nb++;
-		if ((j) % 5 == 0 && buf[i] == '\n')
-			border_nl_nb++;
-		if ((i + 1) % 21 == 0 && buf[i] == '\n')
-		{
-			between_nl_Nb++;
-			j--;
-		}
-		i++;
-		j++;
-	}
-	printf("char_nb\t%d\nhash_nb\t%d\ndot_nb\t%d\n", char_nb, hash_nb, dot_nb);
-	printf("border_nl_nb\t%d\nbetween_nl_Nb \t%d\n", border_nl_nb, between_nl_Nb);
-	if (char_nb < MIN_CHAR_NB || char_nb > MAX_CHAR_NB)
-	{
-		write(2, "error\n", 6);
-		return (0);
-	}
-	if ((char_nb + 1) % (20 + 1) != 0)
-	{
-		write(2, "error\n", 6);
-		return (0);
-	}
+	int		tetriminos_nb;
 	tetriminos_nb = (char_nb + 1) / 21;
-	printf("tetriminos_nb\t%d\n", tetriminos_nb);
-	if (hash_nb / tetriminos_nb != NORMAL_HASH_NB)
-	{
-		write(2, "error\n", 6);
-		return (0);
-	}
-	if (dot_nb / tetriminos_nb != NORMAL_DOT_NB)
-	{
-		write(2, "error\n", 6);
-		return (0);
-	}
-	if (border_nl_nb / tetriminos_nb != 4)
-	{
-		write(2, "error\n", 6);
-		return (0);
-	}
-	if ((between_nl_Nb + 1) / tetriminos_nb != 1)
+	if (char_nb < MIN_CHAR_NB
+		|| char_nb > MAX_CHAR_NB
+		|| (char_nb + 1) % (20 + 1) != 0
+		|| (hash_nb / tetriminos_nb != NORMAL_HASH_NB)
+		|| (dot_nb / tetriminos_nb != NORMAL_DOT_NB)
+		|| (border_nl_nb / tetriminos_nb != 4)
+		|| ((between_nl_nb + 1) / tetriminos_nb != 1))
 	{
 		write(2, "error\n", 6);
 		return (0);
@@ -175,7 +158,6 @@ int		main(int argc, char **argv)
 /*
 **	Verifier que les # ont tous au moin un voisin sinon retourner error
 */
-
 
 	int nb_voisin_min;
 	int index;
@@ -196,7 +178,6 @@ int		main(int argc, char **argv)
 		}
 		index++;
 	}
-	printf("nb_voisin_min\t%d\n", nb_voisin_min);
 	if (nb_voisin_min != hash_nb)
 	{
 		write(2, "error\n", 6);
@@ -212,23 +193,11 @@ int		main(int argc, char **argv)
 	printf("min_square_space\t%d\n", min_square_space);
 
 /*
-**	Decomposer en un tableau en 2D
+**	Decomposer le buffer en un tableau en 2D
 */
-
-
 
 	char **tetris_table;
 	tetris_table = ft_strsplit(buf, '\n');
-
-	/*
-	while (*tetris_table)
-	{
-		printf("%s\n", *tetris_table);
-		tetris_table++;
-	}
-	*/
-
-
 
 /*
 **	Recuperation des coordonnees des # dans une structure de tetrimino
@@ -236,37 +205,32 @@ int		main(int argc, char **argv)
 
 	t_tetrimino tetrimino[tetriminos_nb];
 
-	int ligneuh;
+	int line;
 	int ka;
 	int tetris_iter;
 	int hash_iter;
 
-	ligneuh = 0;
+	line = 0;
 	tetris_iter = -1;
-	while (ligneuh < tetriminos_nb * 4)
+	while (line < tetriminos_nb * 4)
 	{
-		if (((ligneuh) % 4) == 0)
+		if ((line % 4) == 0)
 		{
 			tetris_iter++;
 			hash_iter = 0;
 		}
 		ka = 0;
-		
-		while (tetris_table[ligneuh][ka])
+		while (tetris_table[line][ka])
 		{
-			if (tetris_table[ligneuh][ka] == '#')
+			if (tetris_table[line][ka] == '#')
 			{
-				printf("# repere %d\n", hash_iter);
-				printf("tetris_iter %d\n", tetris_iter);
 				tetrimino[tetris_iter].hash[hash_iter].x = ka % 4;
-				printf("x %d\n", tetrimino[tetris_iter].hash[hash_iter].x);
-				tetrimino[tetris_iter].hash[hash_iter].y = ligneuh % 4;
-				printf("y %d\n", tetrimino[tetris_iter].hash[hash_iter].y);
+				tetrimino[tetris_iter].hash[hash_iter].y = line % 4;
 				hash_iter++;
 			}
 			ka++;
 		}
-		ligneuh++;
+		line++;
 	}
 
 /*
@@ -277,6 +241,7 @@ int		main(int argc, char **argv)
 	int min_y;
 	int max_x;
 	int max_y;
+
 	tetris_iter = 0;
 	while (tetris_iter < tetriminos_nb)
 	{
@@ -329,17 +294,11 @@ int		main(int argc, char **argv)
 		tetris_iter++;
 	}
 
-
-/*
-**	On verifie si on peut placer un tetrimino sur la map
-**		S'il n'y a rien sur la map en dessous du tetrimino
-**		Si le tetrimino rentre dans la map en largeur et hauteur
-*/
-
-
 /*
 **	Initialisation carre minimal
 */
+
+
 
 	char **map;
 	map = (char**)malloc(sizeof(char*) * (min_square_space + 1));
@@ -359,15 +318,23 @@ int		main(int argc, char **argv)
 		hauteur++;
 	}
 	map[hauteur] = 0;
-	
+
+
+/*
+**	On verifie si on peut placer un tetrimino sur la map
+**		S'il n'y a rien sur la map en dessous du tetrimino
+**		Si le tetrimino rentre dans la map en largeur et hauteur
+*/
 
 	t_map carte;
-	carte.iter_point.x = 0;
-	carte.iter_point.y = 0;
+	
+	carte.size = min_square_space;
 
 	tetris_iter = 0;
 	while(tetris_iter < tetriminos_nb)
 	{
+		carte.iter_point.x = 0;
+		carte.iter_point.y = 0;
 		hash_iter = 0;
 		while(hash_iter < 4)
 		{
@@ -377,8 +344,9 @@ int		main(int argc, char **argv)
 				- tetrimino[tetris_iter].ref_point_min.x
 				+ carte.iter_point.x] == '.')
 			{
-				printf("#%d\t", hash_iter);
+				printf("t%d#%d\t", tetris_iter, hash_iter);
 				puts("il y a de la place");
+				printf("x\t%d y\t%d\n", carte.iter_point.x, carte.iter_point.y);
 
 				map[tetrimino[tetris_iter].hash[hash_iter].y
 					- tetrimino[tetris_iter].ref_point_min.y
@@ -388,18 +356,18 @@ int		main(int argc, char **argv)
 			}
 			else
 			{
-				printf("#%d\t", hash_iter);
+				printf("t%d#%d\t", tetris_iter, hash_iter);
 				puts("pas de place");
-				
-				if (carte.iter_point.y < 4)
+				printf("x\t%d y\t%d\n", carte.iter_point.x, carte.iter_point.y);
+				if (carte.iter_point.y < carte.size)
 				{	
-					if (carte.iter_point.x < 3)
+					if (carte.iter_point.x < carte.size)
 					{
 						puts("Point deja pris");
 						carte.iter_point.x++;
 
 					}
-					if (carte.iter_point.x == 3)
+					else if (carte.iter_point.x == carte.size)
 					{
 						puts("Ligne deja prise");
 						carte.iter_point.y++;
@@ -407,14 +375,6 @@ int		main(int argc, char **argv)
 					}
 					hash_iter = -1;
 				}
-				
-				/*
-				if (carte.iter_point.x = 3)
-				{
-					carte.iter_point.y = 
-				}
-				hash_iter = - 1;
-				*/
 			}
 			hash_iter++;
 		}
@@ -428,7 +388,6 @@ int		main(int argc, char **argv)
 		printf("%s\n", *map);
 		map++;
 	}
-
 
 
 /*

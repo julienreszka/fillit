@@ -28,8 +28,8 @@ typedef struct	s_point
 
 typedef struct	s_tetrimino
 {
-	t_point ref_point_min;
-	t_point ref_point_max;
+	t_point ref_min;
+	t_point ref_max;
 	t_point hash[4];
 	char lettre;
 	int largeur;
@@ -38,19 +38,15 @@ typedef struct	s_tetrimino
 
 typedef struct	s_map
 {
-	int size;
-	char **content;
-	t_point iter_point;
-}				t_map;
-
-typedef struct	s_parsing_data
-{
 	int char_nb;
 	int hash_nb;
 	int dot_nb;
 	int border_nl_nb;
 	int between_nl_nb;
-}				t_parsing_data;
+	int size;
+	char **content;
+	t_point p_i;
+}				t_map;
 
 int		ft_floor_sqrt(int nb)
 {
@@ -262,17 +258,17 @@ int		main(int argc, char **argv)
 				max_y = tetrimino[tetris_iter].hash[hash_iter].y;
 			hash_iter++;
 		}
-		tetrimino[tetris_iter].ref_point_min.x = min_x;
-		tetrimino[tetris_iter].ref_point_min.y = min_y;
-		tetrimino[tetris_iter].ref_point_max.x = max_x;
-		tetrimino[tetris_iter].ref_point_max.y = max_y;
+		tetrimino[tetris_iter].ref_min.x = min_x;
+		tetrimino[tetris_iter].ref_min.y = min_y;
+		tetrimino[tetris_iter].ref_max.x = max_x;
+		tetrimino[tetris_iter].ref_max.y = max_y;
 		tetrimino[tetris_iter].largeur = max_x - min_x;
 		tetrimino[tetris_iter].hauteur = max_y - min_y;
 		printf("\nmin_x %d\nmin_y %d\nmax_x %d\nmax_y %d",
-			tetrimino[tetris_iter].ref_point_min.x,
-			tetrimino[tetris_iter].ref_point_min.y,
-			tetrimino[tetris_iter].ref_point_max.x,
-			tetrimino[tetris_iter].ref_point_max.y
+			tetrimino[tetris_iter].ref_min.x,
+			tetrimino[tetris_iter].ref_min.y,
+			tetrimino[tetris_iter].ref_max.x,
+			tetrimino[tetris_iter].ref_max.y
 			);
 		printf("\nlargeur %d\nhauteur %d\n",
 			tetrimino[tetris_iter].largeur,
@@ -333,45 +329,45 @@ int		main(int argc, char **argv)
 	tetris_iter = 0;
 	while(tetris_iter < tetriminos_nb)
 	{
-		carte.iter_point.x = 0;
-		carte.iter_point.y = 0;
+		carte.p_i.x = 0;
+		carte.p_i.y = 0;
 		hash_iter = 0;
 		while(hash_iter < 4)
 		{
 			if (map[tetrimino[tetris_iter].hash[hash_iter].y
-				- tetrimino[tetris_iter].ref_point_min.y 
-				+ carte.iter_point.y][tetrimino[tetris_iter].hash[hash_iter].x
-				- tetrimino[tetris_iter].ref_point_min.x
-				+ carte.iter_point.x] == '.')
+				- tetrimino[tetris_iter].ref_min.y 
+				+ carte.p_i.y][tetrimino[tetris_iter].hash[hash_iter].x
+				- tetrimino[tetris_iter].ref_min.x
+				+ carte.p_i.x] == '.')
 			{
 				printf("t%d#%d\t", tetris_iter, hash_iter);
 				puts("il y a de la place");
-				printf("x\t%d y\t%d\n", carte.iter_point.x, carte.iter_point.y);
+				printf("x\t%d y\t%d\n", carte.p_i.x, carte.p_i.y);
 
 				map[tetrimino[tetris_iter].hash[hash_iter].y
-					- tetrimino[tetris_iter].ref_point_min.y
-					+ carte.iter_point.y][tetrimino[tetris_iter].hash[hash_iter].x
-					- tetrimino[tetris_iter].ref_point_min.x
-					+ carte.iter_point.x] = tetrimino[tetris_iter].lettre;
+					- tetrimino[tetris_iter].ref_min.y
+					+ carte.p_i.y][tetrimino[tetris_iter].hash[hash_iter].x
+					- tetrimino[tetris_iter].ref_min.x
+					+ carte.p_i.x] = tetrimino[tetris_iter].lettre;
 			}
 			else
 			{
 				printf("t%d#%d\t", tetris_iter, hash_iter);
 				puts("pas de place");
-				printf("x\t%d y\t%d\n", carte.iter_point.x, carte.iter_point.y);
-				if (carte.iter_point.y < carte.size)
+				printf("x\t%d y\t%d\n", carte.p_i.x, carte.p_i.y);
+				if (carte.p_i.y < carte.size)
 				{	
-					if (carte.iter_point.x < carte.size)
+					if (carte.p_i.x < carte.size)
 					{
 						puts("Point deja pris");
-						carte.iter_point.x++;
+						carte.p_i.x++;
 
 					}
-					else if (carte.iter_point.x == carte.size)
+					else if (carte.p_i.x == carte.size)
 					{
 						puts("Ligne deja prise");
-						carte.iter_point.y++;
-						carte.iter_point.x = 0;
+						carte.p_i.y++;
+						carte.p_i.x = 0;
 					}
 					hash_iter = -1;
 				}

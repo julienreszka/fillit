@@ -1,21 +1,20 @@
-char **ft_init_map(int size)
+char **ft_init_map(t_map map)
 {
-	map = (char**)malloc(sizeof(char*) * (size + 1));
 	int height;
-	height = 0;
 	int width;
-	while(height < size)
+	
+	map.content = (char**)malloc(sizeof(char*) * (map.size + 1));
+	height = -1;
+	while (++height < map.size)
 	{
-		map[height] = (char*)malloc(sizeof(char) * (size + 1));
-		width = 0;
-		while (width < size)
+		map.content[height] = (char*)malloc(sizeof(char) * (map.size + 1));
+		width = -1;
+		while (++width < map.size)
 		{
-			map[height][width] = '.';
-			width++;
+			map.content[height][width] = '.';
 		}
-		map[height][width] = '\0';
-		height++;
+		map.content[height][width] = '\0';
 	}
-	map[height] = 0;
+	map.content[height] = 0;
 	return (map);
 }

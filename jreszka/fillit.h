@@ -2,6 +2,7 @@
 # define FILLIT_H
 
 # include <fcntl.h>
+# include "libft.h"
 
 # define BUF_SIZE 4096
 # define NORMAL_DOT_NB 12
@@ -40,7 +41,7 @@ typedef struct	s_map
 
 char			*get_buf(char *file_name);
 t_map 			parse(char *buf, t_map map);
-int				validate(t_map map);
-int 			valid_neighbours(char *buf, t_map map);
+int				num_are_valid(t_map map);
+int				hash_neighbours_are_valid(char *buf, t_map map);
 
 #endif

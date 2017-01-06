@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 09:31:35 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/06 12:18:12 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/06 22:05:24 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,12 @@ int		main(int argc, char **argv)
 		data[0] = parse(buf, data[0]);
 		if (num_are_valid(data[0]) && hash_neighbours_are_valid(buf, data[0]))
 		{
-			ft_putstr("Input file ok\n\nPrinting file :\n");
-			ft_print_2d_table(ft_strsplit(buf, '\n'));
-			//init map
-			//store the tetris
 			map[0] = ft_init_map(map[0], data[0]);
-			map[0] = ft_build_tets(ft_strsplit(buf, '\n'), map[0]);
-			printf("map[0].tets[0].hash[0].x : %d\n", map[0].tets[0].hash[0].x);
-			printf("map[0].tets[0].hash[0].y : %d\n", map[0].tets[0].hash[0].y);
-			printf("\n");
 			ft_print_2d_table(map[0].content);
+			ft_build_tets(ft_strsplit(buf, '\n'), map[0]);
+			printf("----------------\n");
+			printf("map[0].tets[0].hash[0].x %d\nmap[0].tets[0].hash[0].y %d\n", 
+					map[0].tets[0].hash[0].x, map[0].tets[0].hash[0].y);
 		}
 	}
 	else

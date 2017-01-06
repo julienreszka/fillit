@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:47:23 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/06 10:53:31 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/06 12:08:06 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <fcntl.h>
 # include "libft.h"
+
+#include <stdio.h>
 
 # define BUF_SIZE 4096
 # define NORMAL_DOT_NB 12
@@ -60,5 +62,9 @@ char			*get_buf(char *file_name);
 t_data 			parse(char *buf, t_data data);
 int				num_are_valid(t_data data);
 int				hash_neighbours_are_valid(char *buf, t_data data);
+void			ft_print_2d_table(char **str);
+int				ft_int_sqrt(int nb);
+t_map			ft_init_map(t_map map, t_data data);
+t_map			ft_build_tets(char **table, t_map map);
 
 #endif

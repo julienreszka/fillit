@@ -6,13 +6,13 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:00:34 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/06 10:09:14 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/06 10:32:41 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int hash_neighbours_are_valid(char *buf, t_map map)
+int hash_neighbours_are_valid(char *buf, t_data data)
 {
 	int min_neighbours_nb;
 	int i;
@@ -31,7 +31,7 @@ int hash_neighbours_are_valid(char *buf, t_map map)
 		}
 		i++;
 	}
-	if (min_neighbours_nb != map.hash_nb)
+	if (min_neighbours_nb != data.hash_nb)
 	{
 		write(2, "error\n", 6);
 		return (0);

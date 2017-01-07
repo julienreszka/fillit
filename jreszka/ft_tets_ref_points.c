@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 11:56:15 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/07 13:41:39 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/07 14:37:13 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,21 @@ t_map ft_tets_ref_points(t_map map, t_data data)
 			if (map.tets[map.tets_i].hash[map.hash_i].y > map.max_y)
 				map.max_y = map.tets[map.tets_i].hash[map.hash_i].y;
 		}
+		printf("--------------------\n");
+		printf("\nmap.min_x %d\nmap.min_y %d\nmap.max_x %d\nmap.max_y %d\n",
+			map.min_x,
+			map.min_y,
+			map.max_x,
+			map.max_y
+			);
+		printf("--------------------\n");
 		map.tets[map.tets_i].ref_min.x = map.min_x;
 		map.tets[map.tets_i].ref_min.y = map.min_y;
 		map.tets[map.tets_i].ref_max.x = map.max_x;
 		map.tets[map.tets_i].ref_max.y = map.max_y;
 		map.tets[map.tets_i].largeur = map.max_x - map.min_x;
 		map.tets[map.tets_i].hauteur = map.max_y - map.min_y;
-		printf("\nmin_x %d\nmin_y %d\nmax_x %d\nmax_y %d",
+/*		printf("\nmin_x %d\nmin_y %d\nmax_x %d\nmax_y %d",
 			map.tets[map.tets_i].ref_min.x,
 			map.tets[map.tets_i].ref_min.y,
 			map.tets[map.tets_i].ref_max.x,
@@ -54,7 +62,7 @@ t_map ft_tets_ref_points(t_map map, t_data data)
 		printf("\nlargeur %d\nhauteur %d\n",
 			map.tets[map.tets_i].largeur,
 			map.tets[map.tets_i].hauteur
-			);
+			);*/
 	}
 	return (map);
 }

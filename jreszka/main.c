@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 09:31:35 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/06 22:05:24 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/07 11:50:48 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ int		main(int argc, char **argv)
 			map[0] = ft_init_map(map[0], data[0]);
 			ft_print_2d_table(map[0].content);
 			ft_build_tets(ft_strsplit(buf, '\n'), map[0]);
-			printf("----------------\n");
-			printf("map[0].tets[0].hash[0].x %d\nmap[0].tets[0].hash[0].y %d\n", 
-					map[0].tets[0].hash[0].x, map[0].tets[0].hash[0].y);
 		}
 	}
 	else

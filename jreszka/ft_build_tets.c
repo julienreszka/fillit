@@ -6,38 +6,30 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 11:06:49 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/06 22:06:49 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/07 11:48:52 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_map ft_build_tets(char **table, t_map *map)
+t_map ft_build_tets(char **table, t_map map)
 {
-	int table_i;
-	int tets_i;
-	int charac_i;
-	int hash_i;
-
-	table_i = -1;
-	tets_i = 0;
-	hash_i = 0;
-	while (table[++table_i])
+	while (table[++map.table_i])
 	{
-		if ((table_i + 1) % 4 == 0)
+		if ((map.table_i + 1) % 4 == 0)
 		{
-			tets_i++;
-			hash_i = 0;
+			map.tets_i++;
+			map.hash_i = 0;
 		}
-		charac_i = -1;
-		while (table[table_i][++charac_i])
+		map.charac_i = -1;
+		while (table[map.table_i][++map.charac_i])
 		{
-			if (table[table_i][charac_i] == '#')
+			if (table[map.table_i][map.charac_i] == '#')
 			{
 
-				map.tets[tets_i].hash[hash_i].x = charac_i;
-				map.tets[tets_i].hash[hash_i].y = (table_i % 4);
-				hash_i++;
+				map.tets[map.tets_i].hash[map.hash_i].x = map.charac_i;
+				map.tets[map.tets_i].hash[map.hash_i].y = (map.table_i % 4);
+				map.hash_i++;
 			}
 		}
 	}

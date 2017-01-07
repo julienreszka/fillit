@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:47:23 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/07 11:45:46 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/07 12:34:31 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ typedef struct	s_map
 	int tets_i;
 	int charac_i;
 	int hash_i;
+	int min_x;
+	int min_y;
+	int max_x;
+	int max_y;
 }				t_map;
 
 char			*get_buf(char *file_name);
@@ -69,6 +73,7 @@ int				hash_neighbours_are_valid(char *buf, t_data data);
 void			ft_print_2d_table(char **str);
 int				ft_int_sqrt(int nb);
 t_map			ft_init_map(t_map map, t_data data);
-t_map			ft_build_tets(char **table, t_map map);
+t_map			ft_build_tets(char **table, t_map map, t_data data);
+t_map			ft_tets_ref_points(t_map map, t_data data);
 
 #endif

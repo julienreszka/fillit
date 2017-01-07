@@ -6,13 +6,13 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 11:06:49 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/07 11:48:52 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/07 12:09:05 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_map ft_build_tets(char **table, t_map map)
+t_map ft_build_tets(char **table, t_map map, t_data data)
 {
 	while (table[++map.table_i])
 	{
@@ -33,5 +33,6 @@ t_map ft_build_tets(char **table, t_map map)
 			}
 		}
 	}
+	map = ft_tets_ref_points(map, data);
 	return (map);
 }

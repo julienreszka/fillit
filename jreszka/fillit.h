@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:47:23 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/08 15:41:45 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/08 16:59:35 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ int				ft_int_sqrt(int nb);
 t_map			ft_init_map(t_map map, t_data data);
 t_map			ft_build_tets(char **table, t_map map, t_data data);
 t_map			ft_tets_ref_points(t_map map, t_data data);
+t_map			ft_tets_chars(t_map map, t_data data);
 
 #endif

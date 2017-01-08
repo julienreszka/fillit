@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 11:06:49 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/08 14:15:22 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/08 17:00:03 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ t_map ft_build_tets(char **table, t_map map, t_data data)
 		i++;
 	}
 	map = ft_tets_ref_points(map, data);
+	map = ft_tets_chars(map, data);
 	return (map);
 }

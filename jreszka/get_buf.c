@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 09:31:35 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/06 10:05:32 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/08 15:35:40 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char *get_buf(char *file_name)
 	int			ret;
 	int			fd;
 
-	buf = (char *)malloc(sizeof(char) * 10000);
+	buf = (char *)malloc(sizeof(char) * 1000);
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 	{

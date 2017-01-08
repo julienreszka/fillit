@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:47:23 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/07 14:27:14 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/08 15:41:45 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define NORMAL_DOT_NB 12
 # define NORMAL_HASH_NB 4
 # define MIN_CHAR_NB 20
-# define MAX_CHAR_NB 545
+# define MAX_CHAR_NB 546
 
 typedef struct	s_data
 {
@@ -47,8 +47,8 @@ typedef struct	s_tet
 	t_point ref_max;
 	t_point hash[4];
 	char lettre;
-	int largeur;
-	int hauteur;
+	int width;
+	int height;
 }				t_tet;
 
 typedef struct	s_map

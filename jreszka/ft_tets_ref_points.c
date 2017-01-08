@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 11:56:15 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/08 15:34:34 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/08 19:01:53 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ t_map ft_tets_ref_points(t_map map, t_data data)
 			map.tets[map.tets_i].hauteur
 			);*/
 	}
+	map = ft_tets_chars(map, data);
 	return (map);
 }

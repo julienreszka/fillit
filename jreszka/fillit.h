@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:47:23 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/10 11:31:38 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/10 20:29:01 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,11 @@ typedef struct	s_tet
 	t_point ref_min;
 	t_point ref_max;
 	t_point hash[4];
-	t_point position;
+	t_point pos;
 	char lettre;
 	int width;
 	int height;
+	int is_placed;
 }				t_tet;
 
 typedef struct	s_map
@@ -65,7 +66,7 @@ typedef struct	s_map
 	int min_y;
 	int max_x;
 	int max_y;
-	int placed_tetri_nb;
+	int placed_tets_nb;
 	t_point pos;
 }				t_map;
 
@@ -79,6 +80,17 @@ t_map			ft_init_map(t_map map, t_data data);
 t_map			ft_build_tets(char **table, t_map map, t_data data);
 t_map			ft_tets_ref_points(t_map map, t_data data);
 t_map			ft_tets_chars(t_map map, t_data data);
-void			ft_solve(t_map map);
+int				can_place_tet(int i, t_map map, int pos_x, int pos_y);
+void			place_tet(int i, t_map map, int pos_x, int pos_y);
+int				can_move_tet_right(int i, t_map map);
+int				can_move_tet_bottom(int i, t_map map);
+int				can_displace_tetri(int i, t_map map);
+int				first_tetri_can_be_displaced(t_map map);
+void			init_tets_pos(t_map map, t_data data);
+t_map			rm_tet(int i, t_map map);
+int				is_placed_tet(int i, t_map map);
+void			move_tet_pos(int i, t_map map);
+t_map 			try_place_all_tets(t_map map);
+void			ft_solve(t_map map, t_data data);
 
 #endif

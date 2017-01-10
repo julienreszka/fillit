@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:39:26 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/06 10:42:25 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/10 19:43:53 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_int_sqrt(int nb)
 	int i;
 
 	i = 2;
-	while (i * i <= nb)
+	while (i * i < nb)
 		i++;
 	return (i);
 }

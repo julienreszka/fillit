@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 10:45:57 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/10 20:36:46 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/10 22:12:57 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int		first_tetri_can_be_displaced(t_map map)
 	return (can_displace_tetri(0, map));
 }
 
-void	init_tets_pos(t_map map, t_data data)
+t_map	init_tets_pos(t_map map, t_data data)
 {
 	int i;
 
@@ -97,7 +97,9 @@ void	init_tets_pos(t_map map, t_data data)
 	{
 		map.tets[i].pos.x = 0;
 		map.tets[i].pos.y = 0;
+		i++;
 	}
+	return (map);
 }
 
 t_map	rm_tet(int i, t_map map)
@@ -122,50 +124,61 @@ t_map	rm_tet(int i, t_map map)
 
 int		is_placed_tet(int i, t_map map)
 {
+	int x;
+	int y;
 
-	map.tets[i].pos.y = 0;
-
-	while (map.tets[i].pos.y < map.size)
+	x = 0;
+	y = 0;
+	while (y < map.size)
 	{
-		ft_putstr("==========> map.tets[i].pos.y <==========\n");
-		ft_putnbr(map.tets[i].pos.y);
-		ft_putstr("\n");
-		map.tets[i].pos.x = 0;
-		while (map.tets[i].pos.x < map.size)
+		//ft_putstr("==========> map.tets[i].pos.y <==========\n");
+		//ft_putnbr(map.tets[i].pos.y);
+		//ft_putstr("\n");
+
+		while (x < map.size)
 		{
-			ft_putstr("==========> map.tets[i].pos.x <==========\n");
-			ft_putnbr(map.tets[i].pos.x);
-			ft_putstr("\n");
+			// ft_putstr("==========> map.tets[i].pos.x <==========\n");
+			// ft_putnbr(map.tets[i].pos.x);
+			// ft_putstr("\n");
 			if (can_place_tet(i, map, map.tets[i].pos.x, map.tets[i].pos.y))
 			{
+				ft_putstr("Bitch placed\n");
 				place_tet(i, map, map.tets[i].pos.x, map.tets[i].pos.y);
 				return (1);
 			}
-			map.tets[i].pos.x++;
+			x++;
 		}
-		map.tets[i].pos.y++;
+		y++;
 	}
 	ft_putstr("Bitch not placed\n");
 	return (0);
 }
 
-void	move_tet_pos(int i, t_map map)
+t_map	move_tet_pos(int i, t_map map)
 {
-	if (map.tets[i].pos.x < map.size)
+	if (map.tets[i].pos.x + map.tets[i].width < map.size)
+	{
+		ft_putstr("moving pos x from ");
+		ft_putnbr(map.tets[i].pos.x);
+		ft_putstr(" to ");
 		map.tets[i].pos.x++;
+		ft_putnbr(map.tets[i].pos.x);
+		ft_putstr("\n");
+	}
 	else
 	{
 		map.tets[i].pos.x = 0;
 		map.tets[i].pos.y++;
 	}
+	return (map);
 }
 
 t_map	try_place_all_tets(t_map map)
 {
+	
 	ft_putstr("is trying to place tet ");
 	ft_putnbr(map.placed_tets_nb);
 	ft_putstr("\n");
-
 	if (is_placed_tet(map.placed_tets_nb, map))
 	{
 		ft_print_2d_table(map.content);
@@ -176,33 +189,43 @@ t_map	try_place_all_tets(t_map map)
 		ft_putstr("\n");
 		sleep(1);
 	}
+	else if (map.tets[map.placed_tets_nb].pos.y < map.size
+		&& map.tets[map.placed_tets_nb].pos.x < map.size)
+	{
+		ft_putstr("can can_displace_tetri");
+		map = move_tet_pos(map.placed_tets_nb, map);
+	}
 	else
 	{
-		if (map.placed_tets_nb > 0)
-		{
-			ft_putstr("map.placed_tets_nb > 0\n");
+		ft_putstr("OUI");
+		map.tets[map.placed_tets_nb].pos.y = 0;
+		map.tets[map.placed_tets_nb].pos.x = 0;
 
-			map.placed_tets_nb--;
-			map = rm_tet(map.placed_tets_nb, map);
-			ft_print_2d_table(map.content);
-			move_tet_pos(map.placed_tets_nb, map);
-		}
+		map.placed_tets_nb--;
+		map = rm_tet(map.placed_tets_nb, map);
+		map = move_tet_pos(map.placed_tets_nb, map);
+		ft_print_2d_table(map.content);
 	}
 	return (map);
 }
 
 void	ft_solve(t_map map, t_data data)
 {
+	map = init_tets_pos(map, data);
 	while (map.placed_tets_nb != (data.hash_nb / 4))
 	{
+		
 		ft_putstr("map.size = ");
 		ft_putnbr(map.size);
 		ft_putstr("\n");
-		while (first_tetri_can_be_displaced(map))
+		while (first_tetri_can_be_displaced(map) || map.placed_tets_nb < (data.hash_nb / 4))
 		{
+			if (map.placed_tets_nb == (data.hash_nb / 4))
+				break;
 			map = try_place_all_tets(map);
 		}
 		map.size++;
 	}
+	ft_putstr("FINAL\n");
 	ft_print_2d_table(map.content);
 }

@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:47:23 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/10 20:29:01 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/10 22:12:33 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,10 @@ int				can_move_tet_right(int i, t_map map);
 int				can_move_tet_bottom(int i, t_map map);
 int				can_displace_tetri(int i, t_map map);
 int				first_tetri_can_be_displaced(t_map map);
-void			init_tets_pos(t_map map, t_data data);
+t_map			init_tets_pos(t_map map, t_data data);
 t_map			rm_tet(int i, t_map map);
 int				is_placed_tet(int i, t_map map);
-void			move_tet_pos(int i, t_map map);
+t_map			move_tet_pos(int i, t_map map);
 t_map 			try_place_all_tets(t_map map);
 void			ft_solve(t_map map, t_data data);
 

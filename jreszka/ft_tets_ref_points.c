@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 11:56:15 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/08 19:01:53 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/10 21:29:12 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,16 @@ t_map ft_tets_ref_points(t_map map, t_data data)
 		map.tets[map.tets_i].ref_max.y = map.max_y;
 		map.tets[map.tets_i].width = map.max_x - map.min_x;
 		map.tets[map.tets_i].height = map.max_y - map.min_y;
-/*		printf("\nmin_x %d\nmin_y %d\nmax_x %d\nmax_y %d",
+		printf("\nmin_x %d\nmin_y %d\nmax_x %d\nmax_y %d",
 			map.tets[map.tets_i].ref_min.x,
 			map.tets[map.tets_i].ref_min.y,
 			map.tets[map.tets_i].ref_max.x,
 			map.tets[map.tets_i].ref_max.y
 			);
 		printf("\nlargeur %d\nhauteur %d\n",
-			map.tets[map.tets_i].largeur,
-			map.tets[map.tets_i].hauteur
-			);*/
+			map.tets[map.tets_i].width,
+			map.tets[map.tets_i].height
+			);
 	}
 	map = ft_tets_chars(map, data);
 	return (map);

@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:47:23 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/08 16:59:35 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/10 11:31:38 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct	s_tet
 	t_point ref_min;
 	t_point ref_max;
 	t_point hash[4];
+	t_point position;
 	char lettre;
 	int width;
 	int height;
@@ -64,6 +65,8 @@ typedef struct	s_map
 	int min_y;
 	int max_x;
 	int max_y;
+	int placed_tetri_nb;
+	t_point pos;
 }				t_map;
 
 char			*get_buf(char *file_name);
@@ -76,5 +79,6 @@ t_map			ft_init_map(t_map map, t_data data);
 t_map			ft_build_tets(char **table, t_map map, t_data data);
 t_map			ft_tets_ref_points(t_map map, t_data data);
 t_map			ft_tets_chars(t_map map, t_data data);
+void			ft_solve(t_map map);
 
 #endif

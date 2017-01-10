@@ -6,7 +6,7 @@
 #    By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/06 09:54:38 by jreszka           #+#    #+#              #
-#    Updated: 2017/01/08 16:59:07 by jreszka          ###   ########.fr        #
+#    Updated: 2017/01/10 10:48:31 by jreszka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC = main.c \
 	ft_build_tets.c \
 	ft_tets_ref_points.c \
 	ft_tets_chars.c \
+	ft_solve.c \
 	libft.a 
 
 all: $(NAME)

@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 10:45:57 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/10 22:18:03 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/10 22:23:23 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ t_map	try_place_all_tets(t_map map)
 	// ft_putstr("\n");
 	if (is_placed_tet(map.placed_tets_nb, map))
 	{
-		ft_print_2d_table(map.content);
+		//ft_print_2d_table(map.content);
 		map.placed_tets_nb++;
 
 		// ft_putstr("map.placed_tets_nb = ");
@@ -226,6 +226,6 @@ void	ft_solve(t_map map, t_data data)
 		}
 		map.size++;
 	}
-	ft_putstr("FINAL\n\n");
+	//ft_putstr("FINAL\n\n");
 	ft_print_2d_table(map.content);
 }

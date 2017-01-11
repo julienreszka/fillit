@@ -6,13 +6,13 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 11:56:15 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/11 18:35:47 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/11 18:40:06 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_map ft_init_hashs(t_map map)
+t_map	ft_init_hashs(t_map map)
 {
 	map.min_x = 4;
 	map.min_y = 4;
@@ -22,7 +22,7 @@ t_map ft_init_hashs(t_map map)
 	return (map);
 }
 
-t_map ft_tets_ref_points(t_map map, t_data data)
+t_map	ft_tets_ref_points(t_map map, t_data data)
 {
 	map.tets_i = -1;
 	while (++map.tets_i < (data.hash_nb / 4))

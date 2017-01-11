@@ -6,13 +6,13 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 09:31:35 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/11 18:36:11 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/11 18:42:58 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char *get_buf(char *file_name)
+char	*get_buf(char *file_name)
 {
 	char		*buf;
 	int			ret;
@@ -37,5 +37,5 @@ char *get_buf(char *file_name)
 		write(2, "error\n", 6);
 		return (0);
 	}
-	return(buf);
+	return (buf);
 }

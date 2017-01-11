@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 09:31:35 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/10 22:41:22 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/11 18:41:33 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int		main(int argc, char **argv)
 {
+	char	*buf;
+	t_data	data[1];
+	t_map	map[1];
+
 	if (argc == 2)
 	{
-		char *buf;
-		t_data data[1];
-		t_map map[1];
-
 		buf = get_buf(argv[1]);
 		data[0] = parse(buf, data[0]);
 		if (num_are_valid(data[0]) && hash_neighbours_are_valid(buf, data[0]))

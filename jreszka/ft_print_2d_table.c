@@ -6,13 +6,13 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:35:26 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/10 22:27:17 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/11 18:47:50 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void ft_print_2d_table(char **str)
+void	ft_print_2d_table(char **str)
 {
 	int i;
 

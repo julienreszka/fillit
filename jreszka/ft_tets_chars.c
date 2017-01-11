@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 16:58:13 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/11 18:35:31 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/11 18:48:14 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_map	ft_tets_chars(t_map map, t_data data)
 {
-	char lettre;
-	int i;
+	char	lettre;
+	int		i;
 
 	i = 0;
 	lettre = 'A';

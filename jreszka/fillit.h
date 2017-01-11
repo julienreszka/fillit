@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:47:23 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/10 22:12:33 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/11 18:11:01 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ t_map			rm_tet(int i, t_map map);
 int				is_placed_tet(int i, t_map map);
 t_map			move_tet_pos(int i, t_map map);
 t_map 			try_place_all_tets(t_map map);
-void			ft_solve(t_map map, t_data data);
+int				ft_solve(t_map map, t_data data);
+t_map			make_map_bigger(t_map map);
 
 #endif

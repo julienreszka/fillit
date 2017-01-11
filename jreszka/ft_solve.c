@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 10:45:57 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/10 22:23:23 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/11 18:12:43 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,9 @@ t_map	try_place_all_tets(t_map map)
 	// ft_putstr("\n");
 	if (is_placed_tet(map.placed_tets_nb, map))
 	{
-		//ft_print_2d_table(map.content);
+		ft_print_2d_table(map.content);
+		ft_putstr("\n");
+		//sleep(1);
 		map.placed_tets_nb++;
 
 		// ft_putstr("map.placed_tets_nb = ");
@@ -209,23 +211,31 @@ t_map	try_place_all_tets(t_map map)
 	return (map);
 }
 
-void	ft_solve(t_map map, t_data data)
+int		ft_solve(t_map map, t_data data)
 {
-	map = init_tets_pos(map, data);
+	// map = init_tets_pos(map, data);
 	while (map.placed_tets_nb != (data.hash_nb / 4))
 	{
-		
+		map = init_tets_pos(map, data);
 		// ft_putstr("map.size = ");
 		// ft_putnbr(map.size);
 		// ft_putstr("\n");
-		while (first_tetri_can_be_displaced(map) || map.placed_tets_nb < (data.hash_nb / 4))
+		while (first_tetri_can_be_displaced(map))
 		{
 			if (map.placed_tets_nb == (data.hash_nb / 4))
-				break;
+			{
+				ft_print_2d_table(map.content);
+				return (0);
+			}
 			map = try_place_all_tets(map);
 		}
 		map.size++;
+		map = make_map_bigger(map);
+		ft_print_2d_table(map.content);
+		ft_putstr("\n");
+		//sleep(5);
 	}
 	//ft_putstr("FINAL\n\n");
-	ft_print_2d_table(map.content);
+	//ft_print_2d_table(map.content);
+	return (0);
 }

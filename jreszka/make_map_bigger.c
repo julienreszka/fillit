@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   make_map_bigger.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/06 09:31:35 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/10 22:41:22 by jreszka          ###   ########.fr       */
+/*   Created: 2017/01/11 18:02:38 by jreszka           #+#    #+#             */
+/*   Updated: 2017/01/11 18:03:17 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		main(int argc, char **argv)
+t_map	make_map_bigger(t_map map)
 {
-	if (argc == 2)
-	{
-		char *buf;
-		t_data data[1];
-		t_map map[1];
+	int height;
+	int width;
 
-		buf = get_buf(argv[1]);
-		data[0] = parse(buf, data[0]);
-		if (num_are_valid(data[0]) && hash_neighbours_are_valid(buf, data[0]))
+	map.placed_tets_nb = 0;
+	map.content = (char**)malloc(sizeof(char*) * (map.size + 1));
+	height = -1;
+	while (++height < map.size)
+	{
+		map.content[height] = (char*)malloc(sizeof(char) * (map.size + 1));
+		width = -1;
+		while (++width < map.size)
 		{
-			map[0] = ft_init_map(map[0], data[0]);
-			map[0] = ft_build_tets(ft_strsplit(buf, '\n'), map[0], data[0]);
-			ft_solve(map[0], data[0]);
+			map.content[height][width] = '.';
 		}
+		map.content[height][width] = '\0';
 	}
-	else
-		write(2, "Usage: ./fillit input_file\n", 27);
-	return (0);
+	map.content[height] = 0;
+	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 09:31:35 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/08 15:35:40 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/11 18:36:11 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char *get_buf(char *file_name)
 	ret = read(fd, buf, BUF_SIZE);
 	if (ret == -1)
 	{
-		write(2, "error\n", 6);		
+		write(2, "error\n", 6);
 		return (0);
 	}
 	buf[ret] = '\0';

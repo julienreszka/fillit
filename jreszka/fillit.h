@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:47:23 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/11 18:11:01 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/11 18:32:04 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <fcntl.h>
 # include "libft.h"
-
-#include <stdio.h>
 
 # define BUF_SIZE 4096
 # define NORMAL_DOT_NB 12

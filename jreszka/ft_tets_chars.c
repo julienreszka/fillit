@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 16:58:13 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/10 22:24:26 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/11 18:35:31 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_map	ft_tets_chars(t_map map, t_data data)
 		map.tets[i].pos.x = 0;
 		map.tets[i].pos.y = 0;
 		map.tets[i].lettre = lettre;
-		// printf("%c\n", map.tets[i].lettre);
 		lettre++;
 		i++;
 	}

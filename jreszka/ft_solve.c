@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 10:45:57 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/11 18:16:13 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/11 18:30:54 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		can_place_tet(int i, t_map map, int pos_x, int pos_y)
 {
 	int available_places;
 	int j;
-	int x; 
+	int x;
 	int y;
 
 	available_places = 0;
@@ -27,8 +27,8 @@ int		can_place_tet(int i, t_map map, int pos_x, int pos_y)
 		x = pos_x + map.tets[i].hash[j].x - map.tets[i].ref_min.x;
 		if (x < map.size && y < map.size)
 		{
-			if (map.content[y][x] == '.' )
-			available_places++;
+			if (map.content[y][x] == '.')
+				available_places++;
 		}
 		j++;
 	}
@@ -40,7 +40,7 @@ int		can_place_tet(int i, t_map map, int pos_x, int pos_y)
 void	place_tet(int i, t_map map, int pos_x, int pos_y)
 {
 	int j;
-	int x; 
+	int x;
 	int y;
 
 	j = 0;
@@ -71,9 +71,8 @@ int		can_move_tet_bottom(int i, t_map map)
 
 int		can_displace_tetri(int i, t_map map)
 {
-	if (can_move_tet_right(i, map) 
+	if (can_move_tet_right(i, map)
 		|| can_move_tet_bottom(i, map))
-
 	{
 		return (1);
 	}
@@ -153,13 +152,16 @@ t_map	move_tet_pos(int i, t_map map)
 	return (map);
 }
 
+/*
+**	ft_print_2d_table(map.content);
+**	ft_putstr("\n");
+**	sleep(1);
+*/
+
 t_map	try_place_all_tets(t_map map)
 {
 	if (is_placed_tet(map.placed_tets_nb, map))
 	{
-		/*ft_print_2d_table(map.content);
-		ft_putstr("\n");
-		sleep(1);*/
 		map.placed_tets_nb++;
 	}
 	else if (map.tets[map.placed_tets_nb].pos.y < map.size
@@ -171,7 +173,6 @@ t_map	try_place_all_tets(t_map map)
 	{
 		map.tets[map.placed_tets_nb].pos.y = 0;
 		map.tets[map.placed_tets_nb].pos.x = 0;
-
 		map.placed_tets_nb--;
 		map = rm_tet(map.placed_tets_nb, map);
 		map = move_tet_pos(map.placed_tets_nb, map);

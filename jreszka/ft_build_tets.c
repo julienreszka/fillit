@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 11:06:49 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/10 22:26:02 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/11 18:35:03 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,11 @@ t_map ft_build_tets(char **table, t_map map, t_data data)
 	int j;
 
 	i = 0;
-	// printf("-------tets------\n");
 	while (i < (data.hash_nb /4))
 	{
 		j = 0;
-		// printf("------------tetris %d----------\n", i);
 		while (j < 4)
 		{
-			// printf("------------hash %d----------\n", j);
-			// printf("x: %d\ny: %d\n", map.tets[i].hash[j].x, map.tets[i].hash[j].y);
 			j++;
 		}
 		i++;

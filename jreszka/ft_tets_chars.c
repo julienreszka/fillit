@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tets_chars.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: brel-baz <brel-baz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 16:58:13 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/11 18:48:14 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/12 19:08:27 by brel-baz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "includes/fillit.h"
 
 t_map	ft_tets_chars(t_map map, t_data data)
 {

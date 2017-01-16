@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_int_sqrt.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: brel-baz <brel-baz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:39:26 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/10 19:43:53 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/12 19:08:18 by brel-baz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "includes/fillit.h"
 
 int		ft_int_sqrt(int nb)
 {

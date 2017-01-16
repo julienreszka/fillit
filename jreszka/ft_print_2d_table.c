@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_2d_table.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: brel-baz <brel-baz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:35:26 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/11 18:47:50 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/12 19:08:21 by brel-baz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "includes/fillit.h"
 
 void	ft_print_2d_table(char **str)
 {

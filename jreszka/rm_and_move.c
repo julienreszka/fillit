@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rm_and_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: brel-baz <brel-baz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 10:45:57 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/11 19:03:08 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/12 19:09:05 by brel-baz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "includes/fillit.h"
 
 t_map	rm_tet(int i, t_map map)
 {

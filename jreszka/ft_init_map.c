@@ -6,11 +6,11 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:45:30 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/10 19:08:14 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/16 17:15:24 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "includes/fillit.h"
 
 t_map	ft_init_map(t_map map, t_data data)
 {
@@ -22,7 +22,7 @@ t_map	ft_init_map(t_map map, t_data data)
 	map.tets_i = 0;
 	map.hash_i = 0;
 	map.charac_i = 0;
-	map.tets = (t_tet*)malloc(sizeof(t_tet) * (data.tetri_nb + 1));
+	map.tets = (t_tet*)malloc(sizeof(t_tet) * (data.hash_nb / 4 + 1));
 	map.placed_tets_nb = 0;
 	map.content = (char**)malloc(sizeof(char*) * (map.size + 1));
 	height = -1;

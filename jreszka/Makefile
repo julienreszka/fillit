@@ -6,7 +6,7 @@
 #    By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/06 09:54:38 by jreszka           #+#    #+#              #
-#    Updated: 2017/01/11 19:03:35 by jreszka          ###   ########.fr        #
+#    Updated: 2017/01/12 21:40:38 by jreszka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,12 +31,23 @@ SRC = main.c \
 	make_map_bigger.c \
 	ft_check_tet_place.c \
 	rm_and_move.c \
-	libft.a 
+
+OBJ = $(SRC:.c=.o)
+
+$(NAME): $(OBJ)
+	@make -C ./libft
+	$(CC) $(FLAGS) -o $(NAME) -lft -L./libft -I./libft $(OBJ)
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(FLAGS) $(SRC) -o $(NAME)
+clean:
+	make -C ./libft clean
+	rm -rf $(OBJ)
 
-test: $(NAME)
-	./fillit testfile.fillit
+fclean : clean
+	make -C ./libft fclean
+	rm -rf $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re

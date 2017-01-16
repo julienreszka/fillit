@@ -6,11 +6,11 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 17:39:11 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/11 18:37:52 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/12 19:42:29 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "includes/fillit.h"
 
 int		valid_neighbours(char *buf, t_map map)
 {
@@ -33,7 +33,7 @@ int		valid_neighbours(char *buf, t_map map)
 	}
 	if (min_neighbours_nb != map.hash_nb)
 	{
-		write(2, "error\n", 6);
+		write(1, "error\n", 6);
 		return (0);
 	}
 	return (1);

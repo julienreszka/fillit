@@ -6,11 +6,11 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 10:45:57 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/11 19:04:04 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/16 17:50:58 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "includes/fillit.h"
 
 int		first_tetri_can_be_displaced(t_map map)
 {
@@ -31,6 +31,8 @@ int		is_placed_tet(int i, t_map map)
 			if (can_place_tet(i, map, map.tets[i].pos.x, map.tets[i].pos.y))
 			{
 				place_tet(i, map, map.tets[i].pos.x, map.tets[i].pos.y);
+				ft_print_2d_table(map.content);
+				ft_putstr("\n");
 				return (1);
 			}
 			x++;
@@ -53,12 +55,6 @@ t_map	init_tets_pos(t_map map, t_data data)
 	}
 	return (map);
 }
-
-/*
-**	ft_print_2d_table(map.content);
-**	ft_putstr("\n");
-**	sleep(1);
-*/
 
 t_map	try_place_all_tets(t_map map)
 {

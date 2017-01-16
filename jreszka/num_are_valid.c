@@ -6,11 +6,11 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 09:31:35 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/06 10:35:20 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/12 19:44:51 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "includes/fillit.h"
 
 int	num_are_valid(t_data data)
 {
@@ -23,7 +23,7 @@ int	num_are_valid(t_data data)
 		|| (data.border_nl_nb / data.tetri_nb != 4)
 		|| ((data.between_nl_nb + 1) / data.tetri_nb != 1))
 	{
-		write(2, "error\n", 6);
+		write(1, "error\n", 6);
 		return (0);
 	}
 	return (1);

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   make_map_bigger.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: brel-baz <brel-baz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 18:02:38 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/11 18:03:17 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/12 19:08:46 by brel-baz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "includes/fillit.h"
 
 t_map	make_map_bigger(t_map map)
 {

@@ -6,11 +6,11 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 18:58:49 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/11 18:59:08 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/16 18:19:08 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "includes/fillit.h"
 
 int		can_place_tet(int i, t_map map, int pos_x, int pos_y)
 {
@@ -63,9 +63,7 @@ int		can_move_tet_right(int i, t_map map)
 int		can_move_tet_bottom(int i, t_map map)
 {
 	if (map.tets[i].height + map.tets[i].pos.y < map.size)
-	{
 		return (1);
-	}
 	return (0);
 }
 

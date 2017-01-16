@@ -6,11 +6,11 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 09:31:35 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/11 18:41:33 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/16 16:49:36 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "includes/fillit.h"
 
 int		main(int argc, char **argv)
 {
@@ -30,6 +30,6 @@ int		main(int argc, char **argv)
 		}
 	}
 	else
-		write(2, "Usage: ./fillit input_file\n", 27);
+		write(1, "Usage: ./fillit input_file\n", 27);
 	return (0);
 }

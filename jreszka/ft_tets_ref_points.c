@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tets_ref_points.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
+/*   By: brel-baz <brel-baz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 11:56:15 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/11 18:40:06 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/12 19:08:33 by brel-baz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "includes/fillit.h"
 
 t_map	ft_init_hashs(t_map map)
 {

@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 10:45:57 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/25 14:49:18 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/25 17:20:30 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,10 @@ int		first_tetri_can_be_displaced(t_map map)
 
 int		is_placed_tet(int i, t_map map)
 {
-	int x;
-	int y;
-
-	x = 0;
-	y = 0;
-	while (y < map.size)
+	if (can_place_tet(i, map, map.tets[i].pos.x, map.tets[i].pos.y))
 	{
-		while (x < map.size)
-		{
-			if (can_place_tet(i, map, map.tets[i].pos.x, map.tets[i].pos.y))
-			{
-				place_tet(i, map, map.tets[i].pos.x, map.tets[i].pos.y);
-				return (1);
-			}
-			x++;
-		}
-		y++;
+		place_tet(i, map, map.tets[i].pos.x, map.tets[i].pos.y);
+		return (1);
 	}
 	return (0);
 }
@@ -60,8 +47,7 @@ t_map	try_place_all_tets(t_map map)
 	{
 		map.placed_tets_nb++;
 	}
-	else if (map.tets[map.placed_tets_nb].pos.y < map.size
-		&& map.tets[map.placed_tets_nb].pos.x < map.size)
+	else if (map.tets[map.placed_tets_nb].pos.y < map.size)
 	{
 		map = move_tet_pos(map.placed_tets_nb, map);
 	}

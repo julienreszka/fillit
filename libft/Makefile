@@ -6,7 +6,7 @@
 #    By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 18:46:23 by jreszka           #+#    #+#              #
-#    Updated: 2016/12/14 18:49:07 by jreszka          ###   ########.fr        #
+#    Updated: 2017/01/26 21:51:47 by jreszka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ $(NAME): $(OBJ)
 	ranlib $(NAME)
 
 %.o: %.c
-	$(CC) $(FLAGS) -c $< -I .
+	$(CC) $(FLAGS) -c $< -I includes/
 
 clean:
 	rm -rf $(OBJ)

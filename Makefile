@@ -6,7 +6,7 @@
 #    By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/06 09:54:38 by jreszka           #+#    #+#              #
-#    Updated: 2017/01/12 21:40:38 by jreszka          ###   ########.fr        #
+#    Updated: 2017/01/26 21:52:12 by jreszka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,8 @@ SRC = main.c \
 OBJ = $(SRC:.c=.o)
 
 $(NAME): $(OBJ)
-	@make -C ./libft
-	$(CC) $(FLAGS) -o $(NAME) -lft -L./libft -I./libft $(OBJ)
+	make -C libft/ fclean && make -C libft/
+	$(CC) -o $(NAME) $(FLAGS) $(OBJ) -I libft/includes -L libft/ -lft
 
 all: $(NAME)
 

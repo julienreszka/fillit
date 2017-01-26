@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:47:23 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/26 19:05:01 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/26 21:42:02 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FILLIT_H
 
 # include <fcntl.h>
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 
 # define BUF_SIZE 4096
 # define NORMAL_DOT_NB 12

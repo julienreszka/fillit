@@ -6,7 +6,7 @@
 /*   By: jreszka <jreszka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 10:47:23 by jreszka           #+#    #+#             */
-/*   Updated: 2017/01/16 16:12:59 by jreszka          ###   ########.fr       */
+/*   Updated: 2017/01/26 19:05:01 by jreszka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,21 @@
 
 typedef struct		s_data
 {
-	int char_nb;
-	int hash_nb;
-	int dot_nb;
-	int border_nl_nb;
-	int between_nl_nb;
-	int tetri_nb;
-	int tetri_i;
-	int hash_i;
-	int neighbours_nb;
+	int				char_nb;
+	int				hash_nb;
+	int				dot_nb;
+	int				border_nl_nb;
+	int				between_nl_nb;
+	int				tetri_nb;
+	int				tetri_i;
+	int				hash_i;
+	int				neighbours_nb;
 }					t_data;
 
 typedef struct		s_point
 {
-	int x;
-	int y;
+	int				x;
+	int				y;
 }					t_point;
 
 typedef struct		s_tet
